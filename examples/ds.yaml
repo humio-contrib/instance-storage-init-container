@@ -37,7 +37,7 @@ spec:
                       - fargate
       containers:
         - name: main
-          image: ghcr.io/humio-contrib/instance-storage-init-container/container:v0.3.1
+          image: ghcr.io/humio-contrib/instance-storage-init-container/container:v0.3.3
           command: ["/entrypoint.sh"]
           securityContext:
             privileged: true
