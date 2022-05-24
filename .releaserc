@@ -36,10 +36,7 @@
             }],
             ["@semantic-release/git", {
                 "assets": [
-                    "pyproject.toml",
                     "VERSION",
-                    "deploy/k8s-microk8s/*",
-                    "charts/Chart.yaml"
                 ],
                 "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
             }],
