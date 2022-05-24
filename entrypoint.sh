@@ -9,7 +9,7 @@ if (( ${#disks[@]} )); then
     for i in "${disks[@]}"
     do
         echo "Creating PV $i"
-        pvcreate $i
+        pvcreate -ff -y $i
     done
 
 
