@@ -3,7 +3,7 @@ echo BEGIN LIST OF NVME
 nvme list
 echo END LIST OF NVME
 
-OUTPUT=$(vgscan 2> /dev/null | grep VGInstance)
+OUTPUT=$(vgscan 2> /dev/null | grep instancestore)
 if [ -z "$OUTPUT" ]
 then
     echo "VG does not exist"
@@ -16,8 +16,8 @@ then
         done
 
 
-        echo "Creating VG=VGInstance $disks"
-        vgcreate VGInstance $disks
+        echo "Creating VG=instancestore $disks"
+        vgcreate instancestore $disks
     fi
 else
     echo "VG exists"
