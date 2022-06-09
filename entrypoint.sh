@@ -4,10 +4,18 @@ nvme list
 echo END LIST OF NVME
 
 OUTPUT=$(vgscan 2> /dev/null | grep instancestore)
+PLATFORM="${1:-aws}"
+
+if [ $PLATFORM == aws ]; then
+  condition="Instance"
+elif [ $PLATFORM == azure ]; then
+  condition="Microsoft NVMe Direct Disk"
+fi
+
 if [ -z "$OUTPUT" ]
 then
     echo "VG does not exist"
-    declare -r disks=($(nvme list | grep Instance | cut -f 1 -d ' '))
+    declare -r disks=($(nvme list | grep "$condition" | cut -f 1 -d ' '))
     if (( ${#disks[@]} )); then
         for i in "${disks[@]}"
         do
